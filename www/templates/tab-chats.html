@@ -1,33 +1,14 @@
 <ion-view title='<img class="title-image" src="img/logo-app.png" />'>
   <ion-content>
-  
+
 	<div class="list" ng-repeat="post in blog">
 		<a class="item item-thumbnail-left" href="#/tab/post/{{ post.id }}">
-		  <span ng-repeat="media in post._embedded"> 
-			<span ng-repeat="media_details in media.featuredmedia">
-				<span ng-repeat="media in media_details.media_details">
-					<span ng-repeat="size in media.sizes">
-						<span ng-repeat="thumb in size.thumbnail">
-							<img src="{{ thumb.source_url }}">
-						</span>
-					</span>
-				</span>
-			</span>			
-		  </span>		  
+      <img src="{{ post.featured_image_thumbnail_url }}">
 		  <div ng-repeat="title in post.title">
 			<h2 ng-bind-html=" title  | sanitize " class="title-job"></h2>
 			<p>{{ post.date | dateFormat }}</p>
 		  </div>
 		</a>
 	</div>
-	<!-- ul class="list" ng-repeat="post in blog">
-		<a class="item item-thumbnail-left" href="#/tab/post/{{ post.id }}">
-			<li class="item" ng-repeat="title in post.title">
-			  <h2 ng-bind-html=" title  | sanitize " class="title-job"></h2>
-			  <p>{{ post.date | dateFormat }}</p>
-			</li>
-		</a>
-		
-	</ul -->
   </ion-content>
 </ion-view>
