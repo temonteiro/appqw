@@ -5,35 +5,33 @@
 			<h1 ng-bind-html=" title  | sanitize "></h1>
 		</div>
 		<div class="row details-info-company" ng-repeat="company in jobs._Company">
-			{{company}} - Postada por <span ng-repeat="author in jobs._embedded" class="text-color-post"> <span ng-repeat="lister in author">{{lister.name}}</span></span>		
+			{{company}} - Postada por <span ng-repeat="author in jobs._embedded" class="text-color-post"> <span ng-repeat="lister in author">{{lister.name}}</span></span>
 		</div>
 		<div class="row type-date-job">
-			<span class="job-date">{{ jobs.date | dateFormat }}<span>
-			<div class="job-type" ng-repeat="type in jobs.job_type">
-				<span ng-if="type == 7"> 
+      <div class="job-type" ng-repeat="type in jobs.job_type">
+				<span ng-if="type == 7">
 					<button class="button-type-job job_type estagio">
 					  Estágio
 					</button>
 				</span>
-				<span ng-if="type == 13"> 
+				<span ng-if="type == 13">
 					<button class="button-type-job job_type emprego">
 					  Emprego
 					</button>
 				</span>
 			</div>
+			<span class="job-date">{{ jobs.date | dateFormat }}<span>			
 		</div>
-		
-		<div class="content" ng-repeat="content in jobs.content">	
-			<h3>Descrição da vaga </h3>		
+
+		<div class="content" ng-repeat="content in jobs.content">
+			<h3>Descrição da vaga </h3>
 			<span ng-bind-html=" content  | sanitize "></span>
 		</div>
-		
+
 		<div class="row details-apply" ng-repeat="apply in jobs._how_to_apply">
 			<h3>Como aplicar </h3>
 			<span ng-bind-html=" apply  | sanitize "></span>
 		</div>
-		
+
   </ion-content>
 </ion-view>
-
-

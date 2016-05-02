@@ -29,70 +29,56 @@ angular.module('starter.controllers', [])
 
 .controller('JobsDaily',['$scope', '$http',function($scope, $http){
 	$scope.jobs = {};
-	
+
 	$http({
 		method:'GET',
-		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/?_embed',
-	
+		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs',
+
 	}).success(function(data){
 		$scope.jobs = data;
 	});
-	
+
 }])
 
 .controller('JobDetails',['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
 	$scope.jobs = {};
-	
+
 	$http({
 		method:'GET',
-		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/?_embed',
-	
+		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/' + $stateParams.jobsId,
+    cache: true
+
 	}).success(function(data){
-		
-		for(var i = 0; i < data.length; i++){
-			
-			if(data[i].id === parseInt($stateParams.jobsId)){
-				$scope.jobs = data[i];
-			}
-			
-		}
+		$scope.jobs = data;
 	});
-	
+
 
 }])
 
 .controller('BlogDaily',['$scope', '$http',function($scope, $http){
 	$scope.blog = {};
-	
+
 	$http({
 		method:'GET',
-		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/posts/?_embed',
-	
+		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/posts/',
+
 	}).success(function(data){
 		$scope.blog = data;
 	});
-	
+
 }])
 
 .controller('PostDetails',['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
 	$scope.blog = {};
-	
+
 	$http({
 		method:'GET',
-		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/posts/',
-	
+		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/posts/' + $stateParams.postId,
+    cache: true
+
 	}).success(function(data){
-		
-		for(var i = 0; i < data.length; i++){
-			
-			if(data[i].id === parseInt($stateParams.postId)){
-				$scope.blog = data[i];
-			}
-			
-		}
+    $scope.blog = data;
 	});
-	
+
 
 }]);
-
-

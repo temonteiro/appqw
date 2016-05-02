@@ -51,7 +51,7 @@
 .button-type-job.temporario, .button-type-job.black { background-color:#898900 !important}
 .button-type-job.pessoa-juridica, .button-type-job.black { background-color:#898900 !important}
 
-div .button-type-job.job-type{
+.button-type-job, .job-type{
 	display: inline-block;
     float: right;
 }
