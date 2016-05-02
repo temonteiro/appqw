@@ -1,0 +1,16 @@
+<ion-view title='<img class="title-image" src="img/logo-app.png" />'>
+  <ion-content class="padding">
+
+		<div ng-repeat="title in blog.title">
+			<h1>{{ title}} </h1>
+		</div>
+		
+		<div class="content" ng-repeat="content in blog.content">	
+			
+			<span ng-bind-html=" content  | sanitize "></span>
+		</div>
+		
+		
+		
+  </ion-content>
+</ion-view>

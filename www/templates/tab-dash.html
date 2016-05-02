@@ -1,0 +1,17 @@
+<ion-view title='<img class="title-image" src="img/logo-app.png" />'>
+	
+  <ion-content class="padding">
+	<div class="list" ng-repeat="job in jobs">
+		<a class="item item-thumbnail-left" href="#/tab/jobs/{{ job.id }}">
+		  <img src="{{ job.featured_image }}">
+		  <div ng-repeat="title in job.title">
+			<h2 ng-bind-html=" title  | sanitize " class="title-job"></h2>
+			<h3 ng-repeat="company in job._Company">{{company}} </h3>
+			<p> Postada por <span ng-repeat="author in job._embedded" class="text-color-post"> <span ng-repeat="lister in author">{{lister.name}}</span></span>
+			 </p>
+			<p>{{ job.date | dateFormat }}</p>
+		  </div>
+		</a>
+	</div>
+  </ion-content>
+</ion-view>

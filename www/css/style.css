@@ -1,0 +1,57 @@
+/* Empty. Add your own CSS if you like */
+.tabs .tab-item .icon.job {
+ background-repeat: no-repeat;
+ background-position:50%;
+ width: 30%;
+ background-image: url('../img/find-a-job.png');
+ background-size:cover;
+}
+
+.tabs .tab-item .icon.blog {
+ background-repeat: no-repeat;
+ background-position:50%;
+ width: 30%;
+ background-image: url('../img/blog.png');
+ background-size:cover;
+}
+
+.text-color-post{
+	color: #CB5451;
+}
+
+.item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p{
+	white-space: normal !important;
+}
+
+.type-date-job{
+	display: inline-block;
+	margin-top:5px;
+}
+.details-info-company{
+	display: inline-block;
+	margin-top: 5px;
+}
+.details-apply{
+	display: block;
+}
+.job-date{
+	float: left;
+}
+
+
+.button-type-job {
+	color:#fff;
+	padding:5px 12px;
+	background:url('../img/noise-pattern.png')
+}
+.button-type-job.freelance, .button-type-job.red { background-color:#340034 !important}
+.button-type-job.emprego, .button-type-job.green { background-color:#980F0F !important}
+.button-type-job.trainee, .button-type-job.blue { background-color:#1A1A1A !important}
+.button-type-job.estagio ,.button-type-job.gray { background-color:#003B00 !important}
+.button-type-job.temporario, .button-type-job.black { background-color:#898900 !important}
+.button-type-job.pessoa-juridica, .button-type-job.black { background-color:#898900 !important}
+
+div .button-type-job.job-type{
+	display: inline-block;
+    float: right;
+}
