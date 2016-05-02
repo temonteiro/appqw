@@ -15,6 +15,11 @@
  background-size:cover;
 }
 
+.header-bg{
+  background: url('../img/bg-default.png');
+  background-repeat: repeat-x;
+}
+
 .text-color-post{
 	color: #CB5451;
 }
@@ -55,3 +60,34 @@
 	display: inline-block;
     float: right;
 }
+
+.tabs-qw{
+  background-color: #d8d8d8;
+}
+
+.tabs-custom > .tabs,
+.tabs.tabs-custom {
+  border-color: #db3439;
+  background-color: #d8d8d8;
+  background-image: linear-gradient(0deg, #d8d8d8, #d8d8d8 50%, transparent 50%);
+  color: #fff; }
+  .tabs-custom > .tabs .tab-item .badge,
+  .tabs.tabs-custom .tab-item .badge {
+    background-color: #db3439;
+    color: #387ef5; }
+
+.tabs-striped.tabs-custom .tabs {
+  background-color: #d8d8d8; }
+
+.tabs-striped.tabs-custom .tab-item {
+  color: rgba(255, 255, 255, 0.4);
+  opacity: 1; }
+  .tabs-striped.tabs-custom .tab-item .badge {
+    opacity: 0.4; }
+  .tabs-striped.tabs-custom .tab-item.tab-item-active, .tabs-striped.tabs-custom .tab-item.active, .tabs-striped.tabs-positive .tab-item.activated {
+    margin-top: -2px;
+    color: #fff;
+    font-weight: bold;
+    border-style: solid;
+    border-width: 2px 0 0 0;
+    border-color: #db3439; }

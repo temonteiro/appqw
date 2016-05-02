@@ -32,7 +32,7 @@ angular.module('starter.controllers', [])
 
 	$http({
 		method:'GET',
-		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs',
+		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/?_embed',
 
 	}).success(function(data){
 		$scope.jobs = data;
@@ -45,7 +45,7 @@ angular.module('starter.controllers', [])
 
 	$http({
 		method:'GET',
-		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/' + $stateParams.jobsId,
+		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/' + $stateParams.jobsId + '?_embed',
     cache: true
 
 	}).success(function(data){
