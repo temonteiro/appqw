@@ -18,7 +18,7 @@ angular.module('starter.controllers', [])
 
 }])
 
-.controller('JobDetails',['$scope', '$http', '$rootScope','$stateParams', function($scope, $http, $rootScope, $stateParams){
+.controller('JobDetails',['$scope', '$rootScope','$stateParams', function($scope, $rootScope, $stateParams){
 	//$scope.jobs = {};
 
 	//console.log($stateParams);
@@ -43,7 +43,7 @@ angular.module('starter.controllers', [])
 
 }])
 
-.controller('BlogDaily',['$scope', '$http',function($scope, $http){
+.controller('BlogDaily',['$scope', '$http', '$rootScope',function($scope, $http, $rootScope){
 	$scope.blog = {};
 
 	$http({
@@ -52,21 +52,22 @@ angular.module('starter.controllers', [])
 
 	}).success(function(data){
 		$scope.blog = data;
+		$rootScope.blog = data;
 	});
 
 }])
 
-.controller('PostDetails',['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
-	$scope.blog = {};
+.controller('PostDetails',['$scope', '$http', '$stateParams', '$rootScope', function($scope, $http, $stateParams, $rootScope){
+	$scope.blog = $rootScope.blog[$stateParams.postId];
 
-	$http({
+	/*$http({
 		method:'GET',
 		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/posts/' + $stateParams.postId,
     cache: true
 
 	}).success(function(data){
     $scope.blog = data;
-	});
+	}); */
 
 
 }]);
