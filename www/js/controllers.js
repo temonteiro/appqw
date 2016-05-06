@@ -29,6 +29,9 @@ angular.module('starter.controllers', [])
 
 /*
 	$http({
+=======
+  $http({
+>>>>>>> master
 		method:'GET',
 		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/' + $stateParams.jobsId + '?_embed',
     cache: true
