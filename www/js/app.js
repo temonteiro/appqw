@@ -77,7 +77,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       }
     })
-	
+
 	.state('tab.post-detail', {
       url: '/post/:postId',
       views: {
@@ -103,16 +103,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 })
 
-.config(function($ionicConfigProvider) {
+/*.config(function($ionicConfigProvider) {
     $ionicConfigProvider.tabs.position('bottom');
-})
+}) */
 
 .filter('dateFormat', function($filter){
  return function(input){
-  if(input == null){ return ""; } 
- 
+  if(input == null){ return ""; }
+
   var _date = $filter('date')(new Date(input), 'dd/MM/yy');
- 
+
   return _date.toUpperCase();
 
  };

@@ -2,7 +2,7 @@
 .tabs .tab-item .icon.job {
  background-repeat: no-repeat;
  background-position:50%;
- width: 30%;
+ width: 20%;
  background-image: url('../img/find-a-job.png');
  background-size:cover;
 }
@@ -10,7 +10,7 @@
 .tabs .tab-item .icon.blog {
  background-repeat: no-repeat;
  background-position:50%;
- width: 30%;
+ width: 20%;
  background-image: url('../img/blog.png');
  background-size:cover;
 }

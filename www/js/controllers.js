@@ -16,7 +16,7 @@ angular.module('starter.controllers', [])
 .controller('JobDetails',['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
 	$scope.jobs = {};
 
-	$http({
+  $http({
 		method:'GET',
 		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/' + $stateParams.jobsId + '?_embed',
     cache: true
