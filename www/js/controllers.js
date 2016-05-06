@@ -1,6 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('JobsDaily',['$scope', '$http',function($scope, $http){
+.value('scopeVars', {
+		jobs: []
+})
+
+.controller('JobsDaily',['$scope', '$http', '$rootScope', function($scope, $http, $rootScope){
 	$scope.jobs = {};
 
 	$http({
@@ -9,22 +13,30 @@ angular.module('starter.controllers', [])
 
 	}).success(function(data){
 		$scope.jobs = data;
+		$rootScope.jobs = data;
 	});
 
 }])
 
-.controller('JobDetails',['$scope', '$http', '$stateParams', function($scope, $http, $stateParams){
-	$scope.jobs = {};
+.controller('JobDetails',['$scope', '$http', '$rootScope','$stateParams', function($scope, $http, $rootScope, $stateParams){
+	//$scope.jobs = {};
 
+	//console.log($stateParams);
+	//console.log($rootScope.jobs);
+	//console.log($rootScope.jobs[$stateParams.jobsId]);
+
+	$scope.jobs = $rootScope.jobs[$stateParams.jobsId];
+
+/*
 	$http({
 		method:'GET',
 		url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/' + $stateParams.jobsId + '?_embed',
     cache: true
 
 	}).success(function(data){
-		$scope.jobs = data;
+		//$scope.jobs = data;
 	});
-
+*/
 
 }])
 
