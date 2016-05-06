@@ -1,7 +1,7 @@
 <ion-view title='<img class="title-image" src="img/logo-app.png" />'>
   <ion-content class="padding">
 
-    <div class="jobs-details-img hero slide-dow" style="background:url('{{jobs.featured_image}}'); background-size: 200px 200px; background-repeat: no-repeat; background-position: center; ">
+    <div class="hero slide-dow" style="background:url('{{jobs.featured_image}}'); background-size: 200px 200px; background-repeat: no-repeat; background-position: center; ">
       <div class="content jobs-details-text-destaque" ng-repeat="title in jobs.title">
         <div class="qw-title-bg"></div>
         <h2 class="qw-title" ng-bind-html=" title  | sanitize "></h2>
