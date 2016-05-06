@@ -35,7 +35,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
     .state('tab', {
     url: '/tab',
     abstract: true,
-    templateUrl: 'templates/tabs.html'
+    templateUrl: 'templates/tabs-menu.html'
   })
 
   // Each tab has its own nav history stack:
@@ -43,7 +43,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
   .state('tab.dash', {
     url: '/dash',
     views: {
-      'tab-dash': {
+      'menuContent': {
         templateUrl: 'templates/tab-dash.html',
         controller: 'JobsDaily'
       }
@@ -53,7 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
   .state('tab.chats', {
       url: '/chats',
       views: {
-        'tab-chats': {
+        'menuContent': {
           templateUrl: 'templates/tab-chats.html',
           controller: 'BlogDaily'
         }
@@ -63,7 +63,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
 	.state('tab.jobs-detail', {
       url: '/jobs/:jobsId',
       views: {
-        'tab-dash': {
+        'menuContent': {
           templateUrl: 'templates/jobs-detail.html',
           controller: 'JobDetails'
         }
@@ -73,7 +73,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
 	.state('tab.post-detail', {
       url: '/post/:postId',
       views: {
-        'tab-chats': {
+        'menuContent': {
           templateUrl: 'templates/post-detail.html',
           controller: 'PostDetails'
         }
