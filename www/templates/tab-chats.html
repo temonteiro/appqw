@@ -1,13 +1,15 @@
 <ion-view view-title='Blog'>
   <ion-content class="padding" class="animate-fade-slide-in">
-    	<div class="list card" ng-repeat="(idx, post) in blog">
-    		<a class="item item-thumbnail-left" href="#/tab/post/{{ idx }}">
-          <img class="avatar" src="{{ post.featured_image_thumbnail_url }}">
-    		  <div ng-repeat="title in post.title">
-      			<h2 ng-bind-html=" title  | sanitize " class="title-job"></h2>
-      			<p class="post-space-card">{{ post.date | dateFormat }}</p>
-    		  </div>
-    		</a>
-    	</div>
+    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+
+  	<div class="list card" ng-repeat="(idx, post) in blog">
+  		<a class="item item-thumbnail-left" href="#/tab/post/{{ idx }}">
+        <img class="avatar" src="{{ post.featured_image_thumbnail_url }}">
+  		  <div ng-repeat="title in post.title">
+    			<h2 ng-bind-html=" title  | sanitize " class="title-job"></h2>
+    			<p class="post-space-card">{{ post.date | dateFormat }}</p>
+  		  </div>
+  		</a>
+  	</div>
   </ion-content>
 </ion-view>
