@@ -27,6 +27,27 @@ angular.module('starter.controllers', [])
 
 	$scope.jobs = $rootScope.jobs[$stateParams.jobsId];
 
+	console.log($scope.jobs.featured_image);
+		console.log($scope.jobs);
+
+		$scope.whatsappShare=function(){
+	     window.plugins.socialsharing.shareViaWhatsApp('$scope.jobs[0].rendered', "$scope.jobs.featured_image",
+			 	"$scope.jobs.link" , null, function(errormsg){alert("Error: Cannot Share")});
+	  }
+	  $scope.twitterShare=function(){
+	     window.plugins.socialsharing.shareViaTwitter('$scope.jobs[0].rendered', "$scope.jobs.featured_image",
+			 	"$scope.jobs.link" , null, function(errormsg){alert("Error: Cannot Share")});
+	  }
+
+		$scope.facebookShare=function(){
+	     window.plugins.socialsharing.shareViaFacebook('$scope.jobs[0].rendered', "$scope.jobs.featured_image",
+			 "$scope.jobs.link" , null, function(errormsg){alert("Error: Cannot Share")});
+	  }
+
+	  $scope.OtherShare=function(){
+	      window.plugins.socialsharing.share('$scope.jobs[0].rendered', "$scope.jobs.featured_image",
+				"$scope.jobs.link" , null, function(errormsg){alert("Error: Cannot Share")});
+	  }
 /*
 	$http({
 =======

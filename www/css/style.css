@@ -133,3 +133,22 @@
 .post-details-margin{
   margin-top: 15px;
 }
+
+#social{
+    background: #f7f7f7;
+    padding: 8px;
+}
+
+#social > li {
+    display: inline-block;
+    /* You can also add some margins here to make it look prettier */
+    zoom:1;
+    *display:inline;
+    /* this fix is needed for IE7- */
+}
+
+#social > li > button{
+    color: #666666;
+    text-decoration: none;
+    padding: 3px 8px;
+}
