@@ -1,10 +1,9 @@
 <ion-view view-title='Vagas'>
-
   <ion-content class="padding" class="animate-fade-slide-in">
-	<div class="list card" ng-repeat="(idx, job) in jobs">
+    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
 
-		<a class="item item-thumbnail-left" href="#/tab/jobs/{{ idx }}">
-      <!--div class="item item-avatar" -->
+    <div class="list card" ng-repeat="(idx, job) in jobs">
+      <a class="item item-thumbnail-left" href="#/tab/jobs/{{ idx }}">
         <img src="{{ job.featured_image }}">
   		  <div ng-repeat="title in job.title">
     			<h2 ng-bind-html=" title  | sanitize " class="title-job"></h2>
@@ -13,8 +12,7 @@
     			 </p>
     			<p>{{ job.date | dateFormat }}</p>
   		  </div>
-      <!-- /div -->
-		</a>
-	</div>
+		  </a>
+    </div>
   </ion-content>
 </ion-view>
