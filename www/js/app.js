@@ -82,7 +82,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
           controller: 'PostDetails'
         }
       }
-    });
+    })
+
+    .state('tab.main.choose-event', {
+    url: "/choose-event",
+    views: {
+      'menuContent@app': {
+        templateUrl: "templates/choose-event.html",
+         controller: 'ChooseEventController'
+      }
+    }
+  });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');
