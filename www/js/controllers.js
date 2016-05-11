@@ -8,6 +8,7 @@ angular.module('starter.controllers', [])
 	$scope.jobs = {};
 
 	var qwHttpRequest = function() {
+		console.log("entrei no metodo");
 			$http({
 				method:'GET',
 				url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/?_embed',
@@ -29,7 +30,7 @@ angular.module('starter.controllers', [])
 }])
 
 .controller('JobDetails',['$scope', '$rootScope','$stateParams', function($scope, $rootScope, $stateParams){
-		$scope.jobs = $rootScope.jobs[$stateParams.jobsId];	
+		$scope.jobs = $rootScope.jobs[$stateParams.jobsId];
 
 		$scope.whatsappShare=function(){
 	     window.plugins.socialsharing.shareViaWhatsApp('$scope.jobs[0].rendered', "$scope.jobs.featured_image",

@@ -8,7 +8,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ionic-material'])
 
 .factory('qwCache', function($cacheFactory){
-  return $cacheFactory('qwCacheData');
+//  return $cacheFactory('qwCacheData');
 })
 
 .run(function($ionicPlatform) {
