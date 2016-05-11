@@ -24,6 +24,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    if(typeof analytics !== undefined) {
+          // No lugar de "UA-XXXXXXXX-XX" você deve colocar o seu tracking id
+          cordova.plugins.analytics.startTrackerWithId("UA-59894750-1");
+          cordova.plugins.analytics.trackView("APP QueroWorkar");
+
+      } else {
+          console.log("Google Analytics indisponível");
+      }
   });
 })
 
@@ -82,17 +91,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
           controller: 'PostDetails'
         }
       }
-    })
-
-    .state('tab.main.choose-event', {
-    url: "/choose-event",
-    views: {
-      'menuContent@app': {
-        templateUrl: "templates/choose-event.html",
-         controller: 'ChooseEventController'
-      }
-    }
-  });
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/dash');

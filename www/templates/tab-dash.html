@@ -3,7 +3,7 @@
     <ion-refresher on-refresh="doRefresh()"></ion-refresher>
 
     <div class="list card" ng-repeat="(idx, job) in jobs">
-      <a class="item item-thumbnail-left" href="#/tab/jobs/{{ idx }}">
+      <a class="item item-thumbnail-left" href="#/tab/jobs/{{ idx }}" ng-click="doAnalytics()">
         <img src="{{ job.featured_image }}">
   		  <div ng-repeat="title in job.title">
     			<h2 ng-bind-html=" title  | sanitize " class="title-job"></h2>
