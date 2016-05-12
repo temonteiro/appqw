@@ -38,22 +38,22 @@ angular.module('starter.controllers', [])
 		$scope.jobs = $rootScope.jobs[$stateParams.jobsId];
 
 		$scope.whatsappShare=function(){
-	     window.plugins.socialsharing.shareViaWhatsApp('$scope.jobs[0].rendered', "$scope.jobs.featured_image",
-			 	"$scope.jobs.link" , null, function(errormsg){alert("Error: Cannot Share")});
+	     window.plugins.socialsharing.shareViaWhatsApp("[QueroWorkar] "+$scope.jobs.title.rendered, $scope.jobs.featured_image,
+			 	$scope.jobs.link , null, function(errormsg){alert("Error: Cannot Share")});
 	  }
 	  $scope.twitterShare=function(){
-	     window.plugins.socialsharing.shareViaTwitter('$scope.jobs[0].rendered', "$scope.jobs.featured_image",
-			 	"$scope.jobs.link" , null, function(errormsg){alert("Error: Cannot Share")});
+	     window.plugins.socialsharing.shareViaTwitter($scope.jobs.title.rendered, $scope.jobs.featured_image,
+			 	$scope.jobs.link , null, function(errormsg){alert("Error: Cannot Share")});
 	  }
 
 		$scope.facebookShare=function(){
-	     window.plugins.socialsharing.shareViaFacebook('$scope.jobs[0].rendered', "$scope.jobs.featured_image",
-			 "$scope.jobs.link" , null, function(errormsg){alert("Error: Cannot Share")});
+	     window.plugins.socialsharing.shareViaFacebook($scope.jobs.title.rendered, $scope.jobs.featured_image,
+			 $scope.jobs.link , null, function(errormsg){alert("Error: Cannot Share")});
 	  }
 
 	  $scope.OtherShare=function(){
-	      window.plugins.socialsharing.share('$scope.jobs[0].rendered', "$scope.jobs.featured_image",
-				"$scope.jobs.link" , null, function(errormsg){alert("Error: Cannot Share")});
+	      window.plugins.socialsharing.share($scope.jobs.title.rendered, $scope.jobs.featured_image,
+				$scope.jobs.link , null, function(errormsg){alert("Error: Cannot Share")});
 	  }
 
 }])
