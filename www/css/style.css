@@ -153,9 +153,14 @@
     padding: 3px 8px;
 }
 
-.bg-menu-qw{
-  background: url('img/bg-default.png');
+.spinner {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  height: 85px;
+  text-align: center;
 }
-.{
-  display: block;
+.spinner svg {
+  width: 19% !important;
+  height: 85px !important;
 }

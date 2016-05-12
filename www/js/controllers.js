@@ -6,6 +6,8 @@ angular.module('starter.controllers', [])
 
 .controller('JobsDaily',['$scope', '$http', '$rootScope', function($scope, $http, $rootScope){
 	$scope.jobs = {};
+	//Exibindo o loading
+  $scope.loading = true;
 
 	var qwHttpRequest = function() {
 		console.log("entrei no metodo");
@@ -16,6 +18,9 @@ angular.module('starter.controllers', [])
 			.success(function(data){
 				$scope.jobs = data;
 				$rootScope.jobs = data;
+				//Removendo o loading
+				$scope.loading = false;
+
 			})
 			.finally(function(){
 				$scope.$broadcast('scroll.refreshComplete');
@@ -55,7 +60,8 @@ angular.module('starter.controllers', [])
 
 .controller('BlogDaily',['$scope', '$http', '$rootScope',function($scope, $http, $rootScope){
 	$scope.blog = {};
-
+	//Exibindo o loading
+  $scope.loading = true;
 	var qwHttpRequest = function() {
 			$http({
 				method:'GET',
@@ -64,6 +70,8 @@ angular.module('starter.controllers', [])
 			.success(function(data){
 				$scope.blog = data;
 				$rootScope.blog = data;
+				//Removendo o loading
+				$scope.loading = false;
 			})
 			.finally(function(){
 				$scope.$broadcast('scroll.refreshComplete');
