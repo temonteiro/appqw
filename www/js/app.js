@@ -11,8 +11,30 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
 //  return $cacheFactory('qwCacheData');
 })
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $ionicPopup) {
   $ionicPlatform.ready(function() {
+
+    if (window.Connection) {
+
+        if (navigator.connection.type == Connection.NONE) {
+            $ionicPopup.confirm({
+                title: "Internet Disconnected",
+                content: "The internet is disconnected on your device."
+            })
+            .then( function(result) {
+                if ( !result ) {
+                    ionic.Platform.exitApp();
+                }
+            });
+        }
+
+    } else {
+        $ionicPopup.confirm({
+            title: "No connection available",
+            content: "The window object has no Connection property (window.Connection)"
+        });
+    }
+
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
@@ -45,7 +67,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs-menu.html'
