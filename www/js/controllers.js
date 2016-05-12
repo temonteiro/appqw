@@ -7,26 +7,25 @@ angular.module('starter.controllers', [])
 .controller('JobsDaily',['$scope', '$http', '$rootScope', function($scope, $http, $rootScope){
 	$scope.jobs = {};
 
-	var qwHttpRequest = function() {
-		console.log("entrei no metodo");
-			$http({
-				method:'GET',
-				url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/?_embed',
-			})
-			.success(function(data){
-				$scope.jobs = data;
-				$rootScope.jobs = data;
-			})
-			.finally(function(){
-				$scope.$broadcast('scroll.refreshComplete');
-			});
-	}
+	//var qwHttpRequest = function() {
+		$http({
+			method:'GET',
+			url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/?_embed',
+		})
+		.success(function(data){
+			$scope.jobs = data;
+			$rootScope.jobs = data;
+		})
+		.finally(function(){
+			$scope.$broadcast('scroll.refreshComplete');
+		});
+	//}
 
-	$scope.doRefresh = function() {
-		qwHttpRequest();
-	}
+	//$scope.doRefresh = function() {
+	//	qwHttpRequest();
+	//}
 
-	qwHttpRequest();
+	//qwHttpRequest();
 }])
 
 .controller('JobDetails',['$scope', '$rootScope','$stateParams', function($scope, $rootScope, $stateParams){
@@ -56,25 +55,25 @@ angular.module('starter.controllers', [])
 .controller('BlogDaily',['$scope', '$http', '$rootScope',function($scope, $http, $rootScope){
 	$scope.blog = {};
 
-	var qwHttpRequest = function() {
-			$http({
-				method:'GET',
-				url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/posts/',
-			})
-			.success(function(data){
-				$scope.blog = data;
-				$rootScope.blog = data;
-			})
-			.finally(function(){
-				$scope.$broadcast('scroll.refreshComplete');
-			});
-	}
+	//var qwHttpRequest = function() {
+		$http({
+			method:'GET',
+			url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/posts/',
+		})
+		.success(function(data){
+			$scope.blog = data;
+			$rootScope.blog = data;
+		})
+		.finally(function(){
+			$scope.$broadcast('scroll.refreshComplete');
+		});
+	//}
 
-	$scope.doRefresh = function() {
-		qwHttpRequest();
-	}
+	//$scope.doRefresh = function() {
+	//	qwHttpRequest();
+	//}
 
-	qwHttpRequest();
+	//qwHttpRequest();
 }])
 
 .controller('PostDetails',['$scope', '$http', '$stateParams', '$rootScope', function($scope, $http, $stateParams, $rootScope){

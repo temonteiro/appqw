@@ -7,10 +7,6 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ionic-material'])
 
-.factory('qwCache', function($cacheFactory){
-//  return $cacheFactory('qwCacheData');
-})
-
 .run(function($ionicPlatform, $ionicPopup) {
   $ionicPlatform.ready(function() {
 
