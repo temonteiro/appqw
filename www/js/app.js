@@ -8,7 +8,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ionic-material'])
 
 .factory('qwCache', function($cacheFactory){
-  return $cacheFactory('qwCacheData');
+//  return $cacheFactory('qwCacheData');
 })
 
 .run(function($ionicPlatform) {
@@ -24,6 +24,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    if(typeof analytics !== undefined) {
+          // No lugar de "UA-XXXXXXXX-XX" você deve colocar o seu tracking id
+          cordova.plugins.analytics.startTrackerWithId("UA-59894750-1");
+          cordova.plugins.analytics.trackView("APP QueroWorkar");
+
+      } else {
+          console.log("Google Analytics indisponível");
+      }
   });
 })
 
