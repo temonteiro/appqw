@@ -4,13 +4,15 @@ angular.module('starter.controllers', [])
 		jobs: []
 })
 
-.controller('JobsDaily',['$scope', '$http', '$rootScope', function($scope, $http, $rootScope){
+.controller('JobsDaily',['$scope', '$http', '$rootScope', 'cordovaGoogleAnalytics',function($scope, $http, $rootScope,$cordovaGoogleAnalytics){
 	$scope.jobs = {};
 	//Exibindo o loading
   $scope.loading = true;
+  $cordovaGoogleAnalytics.startTrackerWithId("UA-59894750-1");
+  console.log($cordovaGoogleAnalytics);
 
 	var qwHttpRequest = function() {
-		console.log("entrei no metodo");
+	
 			$http({
 				method:'GET',
 				url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/?_embed',
