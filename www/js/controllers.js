@@ -76,6 +76,6 @@ angular.module('starter.controllers', [])
 
 	$scope.OtherShare=function(){
 			window.plugins.socialsharing.share("[QueroWorkar] "+$scope.blog.title.rendered, $scope.blog.featured_image,
-			$scope.blog.link , null, function(errormsg){alert("Error: Cannot Share")});
+			$scope.jobs.link , null, function(errormsg){alert("Error: Cannot Share")});
 	}
 }]);
