@@ -1,13 +1,13 @@
 <ion-view view-title='Contato'>
   <ion-content class="padding" class="animate-fade-slide-in">
-    Gostou do nosso app? Quer deixar alguma sugestão?
-    <br>
-    Entre em contato conosco: <a href="#" ng-click="whatToDo.sendEmail('thalita.monteiro@queroworkar.com.br')">thalita.monteiro@queroworkar.com.br</a>
+    <div class="content">
+      Gostou do nosso app? Quer deixar alguma sugestão?
+      <div class="clear"></div>
+      <button ng-click="sendEmail()" class="button button-icon icon ion-email">
+       Enviar uma mensagem
+      </button>
+    </div>
     <div class="clear"></div>
-
     <img  class="img-contact" src="img/boneca-contato.png" alt="contato"/>
-
-
-
   </ion-content>
 </ion-view>

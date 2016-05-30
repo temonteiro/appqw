@@ -34,36 +34,16 @@ angular.module('starter.controllers', [])
 	qwHttpRequest();
 }])
 
-.controller('Contact',['$scope', '$http', '$rootScope', function($scope, $http, $rootScope){
-	var whatToDo = this;
+.controller('Contact',['$scope', function($scope){
 
-/**
- * Sends an email using Email composer with attachments plugin and using
- * parameter email.
- *
- * @param email
- */
-whatToDo.sendEmail = function (email) {
-  if (window.plugins && window.plugins.emailComposer) { //check if plugin exists
+		$scope.sendEmail = function() {
+			window.plugins.socialsharing.shareViaEmail(null,'Feedback APP QueroWorkar','thalita.monteiro@queroworkar.com.br');
+		};
 
-    window.plugins.emailComposer.showEmailComposerWithCallback(function (result) {
-        //console.log("Email sent successfully");
-      },
-
-      "Feedback APP QueroWorkar",        // Subject
-      null,        // Body
-      [email],     // To (Email to send)
-      null,        // CC
-      null,        // BCC
-      false,       // isHTML
-      null,        // Attachments
-      null);       // Attachment Data
-  }
-
-}
 }])
 
-.controller('JobDetails',['$scope', '$rootScope','$stateParams', function($scope, $rootScope, $stateParams){
+.controller('JobDetails',['$scope', '$rootScope','$stateParams','$ionicActionSheet', function($scope, $rootScope,
+				$stateParams,$ionicActionSheet){
 		$scope.jobs = $rootScope.jobs[$stateParams.jobsId];
 
 		$scope.showActionsheet = function() {
@@ -127,12 +107,13 @@ whatToDo.sendEmail = function (email) {
 	qwHttpRequest();
 }])
 
-.controller('PostDetails',['$scope', '$http', '$stateParams', '$rootScope', function($scope, $http, $stateParams, $rootScope){
+.controller('PostDetails',['$scope', '$http', '$stateParams', '$rootScope','$ionicActionSheet', function($scope, $http,
+				$stateParams, $rootScope,$ionicActionSheet){
 	$scope.blog = $rootScope.blog[$stateParams.postId];
 
 	$scope.showActionsheet = function() {
 
-			$ionicActionSheet.show({
+	$ionicActionSheet.show({
 			titleText: 'Compartilhar com...',
 			buttons: [
 				{ text: '<i class="icon ion-social-twitter"></i> Twitter' },
@@ -147,16 +128,16 @@ whatToDo.sendEmail = function (email) {
 			buttonClicked: function(index) {
 				switch (index){
 					case 0 :
-						window.plugins.socialsharing.shareViaTwitter("[QueroWorkar] "+$scope.jobs.title.rendered, null,	$scope.jobs.link);
+						window.plugins.socialsharing.shareViaTwitter("[QueroWorkar] "+$scope.blog.title.rendered, null,	$scope.blog.link);
 						return true;
 					case 1 :
-						window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(null, null,	$scope.jobs.link, "[QueroWorkar] "+$scope.jobs.title.rendered);
+						window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(null, null,	$scope.blog.link, "[QueroWorkar] "+$scope.blog.title.rendered);
 						return true;
 					case 2:
-					 window.plugins.socialsharing.shareViaWhatsApp("[QueroWorkar] "+$scope.jobs.title.rendered, null,	$scope.jobs.link, null);
+					 window.plugins.socialsharing.shareViaWhatsApp("[QueroWorkar] "+$scope.blog.title.rendered, null,	$scope.blog.link, null);
 					 return true;
 					 case 3:
-					 window.plugins.socialsharing.share(null, null,	$scope.jobs.link);
+					 window.plugins.socialsharing.share(null, null,	$scope.blog.link);
 				}
 			}
 		});
