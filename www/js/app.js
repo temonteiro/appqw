@@ -80,6 +80,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
       }
     })
 
+    .state('tab.about', {
+      url: '/about',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/about.html',
+          controller: 'JobsDaily'
+        }
+      }
+    })
+
+    .state('tab.contact', {
+      url: '/contact',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/contact.html',
+          controller: 'Contact'
+        }
+      }
+    })
+
 	.state('tab.jobs-detail', {
       url: '/jobs/:jobsId',
       views: {
