@@ -34,6 +34,35 @@ angular.module('starter.controllers', [])
 	qwHttpRequest();
 }])
 
+.controller('Contact',['$scope', '$http', '$rootScope', function($scope, $http, $rootScope){
+	var whatToDo = this;
+
+/**
+ * Sends an email using Email composer with attachments plugin and using
+ * parameter email.
+ *
+ * @param email
+ */
+whatToDo.sendEmail = function (email) {
+  if (window.plugins && window.plugins.emailComposer) { //check if plugin exists
+
+    window.plugins.emailComposer.showEmailComposerWithCallback(function (result) {
+        //console.log("Email sent successfully");
+      },
+
+      "Feedback APP QueroWorkar",        // Subject
+      null,        // Body
+      [email],     // To (Email to send)
+      null,        // CC
+      null,        // BCC
+      false,       // isHTML
+      null,        // Attachments
+      null);       // Attachment Data
+  }
+
+}
+}])
+
 .controller('JobDetails',['$scope', '$rootScope','$stateParams', function($scope, $rootScope, $stateParams){
 		$scope.jobs = $rootScope.jobs[$stateParams.jobsId];
 
@@ -76,6 +105,6 @@ angular.module('starter.controllers', [])
 
 	$scope.OtherShare=function(){
 			window.plugins.socialsharing.share("[QueroWorkar] "+$scope.blog.title.rendered, $scope.blog.featured_image,
-			$scope.blog.link , null, function(errormsg){alert("Error: Cannot Share")});
+			$scope.jobs.link , null, function(errormsg){alert("Error: Cannot Share")});
 	}
 }]);

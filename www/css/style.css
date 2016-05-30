@@ -164,3 +164,14 @@
   width: 19% !important;
   height: 85px !important;
 }
+
+.name-qw-menu{
+    float: right;
+    margin-left: 71px !important;
+    margin-top: 31px !important;
+}
+
+.img-contact{
+  display: block;
+   margin: 0 auto;
+}
