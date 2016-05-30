@@ -39,6 +39,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
       StatusBar.styleDefault();
     }
 
+    if(typeof analytics !== undefined) {
+        // No lugar de "UA-XXXXXXXX-XX" você deve colocar o seu tracking id
+        cordova.plugins.analytics.startTrackerWithId("UA-59894750-1");
+        cordova.plugins.analytics.trackView("APP QueroWorkar");
+
+    } else {
+        console.log("Google Analytics indisponível");
+    }
+
 
   });
 })

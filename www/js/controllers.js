@@ -4,12 +4,10 @@ angular.module('starter.controllers', [])
 		jobs: []
 })
 
-.controller('JobsDaily',['$scope', '$http', '$rootScope', 'cordovaGoogleAnalytics',function($scope, $http, $rootScope,$cordovaGoogleAnalytics){
+.controller('JobsDaily',['$scope', '$http', '$rootScope',function($scope, $http, $rootScope){
 	$scope.jobs = {};
 	//Exibindo o loading
   $scope.loading = true;
-  $cordovaGoogleAnalytics.startTrackerWithId("UA-59894750-1");
-  console.log($cordovaGoogleAnalytics);
 
 	var qwHttpRequest = function() {
 
