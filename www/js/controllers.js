@@ -66,10 +66,37 @@ whatToDo.sendEmail = function (email) {
 .controller('JobDetails',['$scope', '$rootScope','$stateParams', function($scope, $rootScope, $stateParams){
 		$scope.jobs = $rootScope.jobs[$stateParams.jobsId];
 
-		$scope.OtherShare=function(){
-	      window.plugins.socialsharing.share("[QueroWorkar] "+$scope.jobs.title.rendered, $scope.jobs.featured_image,
-				$scope.jobs.link , null, function(errormsg){alert("Error: Cannot Share")});
-	  }
+		$scope.showActionsheet = function() {
+
+				$ionicActionSheet.show({
+				titleText: 'Compartilhar com...',
+				buttons: [
+					{ text: '<i class="icon ion-social-twitter"></i> Twitter' },
+					{ text: '<i class="icon ion-social-facebook"></i> Facebook' },
+					{ text: '<i class="icon ion-social-whatsapp"></i> WhatsApp' },
+					{ text: '<i class="icon ion-android-share-alt"></i> Compartilhar' },
+				],
+				cancelText: 'Cancelar',
+				cancel: function() {
+					console.log('CANCELLED');
+				},
+				buttonClicked: function(index) {
+					switch (index){
+						case 0 :
+							window.plugins.socialsharing.shareViaTwitter("[QueroWorkar] "+$scope.jobs.title.rendered, null,	$scope.jobs.link);
+							return true;
+						case 1 :
+							window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(null, null,	$scope.jobs.link, "[QueroWorkar] "+$scope.jobs.title.rendered);
+							return true;
+						case 2:
+						 window.plugins.socialsharing.shareViaWhatsApp("[QueroWorkar] "+$scope.jobs.title.rendered, null,	$scope.jobs.link, null);
+						 return true;
+						 case 3:
+						 window.plugins.socialsharing.share(null, null,	$scope.jobs.link);
+					}
+				}
+			});
+		};
 
 }])
 
@@ -103,8 +130,35 @@ whatToDo.sendEmail = function (email) {
 .controller('PostDetails',['$scope', '$http', '$stateParams', '$rootScope', function($scope, $http, $stateParams, $rootScope){
 	$scope.blog = $rootScope.blog[$stateParams.postId];
 
-	$scope.OtherShare=function(){
-			window.plugins.socialsharing.share("[QueroWorkar] "+$scope.blog.title.rendered, $scope.blog.featured_image,
-			$scope.jobs.link , null, function(errormsg){alert("Error: Cannot Share")});
-	}
+	$scope.showActionsheet = function() {
+
+			$ionicActionSheet.show({
+			titleText: 'Compartilhar com...',
+			buttons: [
+				{ text: '<i class="icon ion-social-twitter"></i> Twitter' },
+				{ text: '<i class="icon ion-social-facebook"></i> Facebook' },
+				{ text: '<i class="icon ion-social-whatsapp"></i> WhatsApp' },
+				{ text: '<i class="icon ion-android-share-alt"></i> Compartilhar' },
+			],
+			cancelText: 'Cancelar',
+			cancel: function() {
+				console.log('CANCELLED');
+			},
+			buttonClicked: function(index) {
+				switch (index){
+					case 0 :
+						window.plugins.socialsharing.shareViaTwitter("[QueroWorkar] "+$scope.jobs.title.rendered, null,	$scope.jobs.link);
+						return true;
+					case 1 :
+						window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(null, null,	$scope.jobs.link, "[QueroWorkar] "+$scope.jobs.title.rendered);
+						return true;
+					case 2:
+					 window.plugins.socialsharing.shareViaWhatsApp("[QueroWorkar] "+$scope.jobs.title.rendered, null,	$scope.jobs.link, null);
+					 return true;
+					 case 3:
+					 window.plugins.socialsharing.share(null, null,	$scope.jobs.link);
+				}
+			}
+		});
+	};
 }]);
