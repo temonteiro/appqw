@@ -1,13 +1,23 @@
 <ion-view view-title='Contato'>
   <ion-content class="padding" class="animate-fade-slide-in">
     <div class="content">
-      Gostou do nosso app? Quer deixar alguma sugestão?
+      <div class="row responsive-sm">
+        <h3>Gostou do nosso app? Quer deixar alguma sugestão?</h3>
+      </div>
+
       <div class="clear"></div>
-      <button ng-click="sendEmail()" class="button button-icon icon ion-email">
-       Enviar uma mensagem
-      </button>
+      <div class="row responsive-sm">
+        <button ng-click="sendEmail()" class="button button-icon icon ion-email">
+         Enviar uma mensagem
+        </button>
+      </div>
+      <div class="clear"></div>
+      <div class="row responsive-sm">
+        <img  class="img-contact" src="img/boneca-contato.png" alt="contato"/>
+        <span class="reserved">Todos os direitos reservados</span>
+      </div>
+
     </div>
-    <div class="clear"></div>
-    <img  class="img-contact" src="img/boneca-contato.png" alt="contato"/>
+
   </ion-content>
 </ion-view>

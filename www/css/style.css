@@ -175,3 +175,14 @@
   display: block;
    margin: 0 auto;
 }
+
+.reserved{
+  text-align: center;
+  font-size: 11px;
+  color: gray;
+}
+
+.job-description{
+  font-size: 14px;
+  font-family: sans-serif;
+}
