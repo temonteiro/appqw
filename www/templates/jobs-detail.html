@@ -14,15 +14,12 @@
 
 
   <ion-content class="padding">
-
     <div class="hero slide-dow" style="background:url('{{jobs.featured_image}}'); background-size: 200px 200px; background-repeat: no-repeat; background-position: center; ">
       <div class="content jobs-details-text-destaque" ng-repeat="title in jobs.title">
         <div class="qw-title-bg"></div>
         <h2 class="qw-title" ng-bind-html=" title  | sanitize "></h2>
       </div>
     </div>
-
-
     <div class="jobs-details">
   		<div class="row details-info-company jobs-details-text" ng-repeat="company in jobs._Company">
   			{{company}} - Postada por <span ng-repeat="author in jobs._embedded" class="text-color-post"> <span ng-repeat="lister in author">{{lister.name}}</span></span>
@@ -44,14 +41,16 @@
   		</div>
     </div>
 
-		<div class="content" ng-repeat="content in jobs.content">
+    <div class="clear"></div>
+		<div class="row responsive-sm" ng-repeat="content in jobs.content">
 			<h3>Descrição da vaga </h3>
-			<span ng-bind-html=" content  | sanitize "></span>
+			<span class="job-description" ng-bind-html=" content  | sanitize "></span>
 		</div>
 
-		<div class="row details-apply" ng-repeat="apply in jobs._how_to_apply">
+		<div class="row details-apply responsive-sm" ng-repeat="apply in jobs._how_to_apply">
 			<h3>Como aplicar </h3>
-			<span ng-bind-html=" apply  | sanitize "></span>
+			<span class="job-description" ng-bind-html=" apply  | sanitize "></span>
 		</div>
+    <div class="clear"></div>
   </ion-content>
 </ion-view>

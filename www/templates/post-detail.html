@@ -20,9 +20,9 @@
         <h3 ng-bind-html=" title  | sanitize "></h3>
   		</div>
     </div>
-
+    <div class="clear"></div>
 		<div class="content post-details-margin" ng-repeat="content in blog.content">
-			<span ng-bind-html=" content  | sanitize "></span>
+			<span class="job-description" ng-bind-html=" content  | sanitize "></span>
 		</div>
   </ion-content>
 </ion-view>
