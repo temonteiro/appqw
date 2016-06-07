@@ -50,8 +50,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
 
 
     if(window.plugins && window.plugins.AdMob) {
-            var admob_key = device.platform == "Android" ?
-            "ca-app-pub-2866646594343384/8957804156" : "ca-app-pub-2866646594343384/8957804156";
+            var admob_key = device.platform == "Android" ? "ca-app-pub-2866646594343384/8957804156" : "ca-app-pub-2866646594343384/8957804156";
             var admob = window.plugins.AdMob;
             admob.createBannerView(
                 {
