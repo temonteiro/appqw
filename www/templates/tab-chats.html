@@ -1,8 +1,12 @@
 <ion-view view-title='Blog'>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-more" ng-click="popover.show($event)"></button>
+  </ion-nav-buttons>
+
   <ion-content class="padding" class="animate-fade-slide-in">
     <ion-refresher on-refresh="doRefresh()"></ion-refresher>
     <ion-spinner icon="spiral" ng-show="loading"></ion-spinner>
-    
+
   	<div class="list card" ng-repeat="(idx, post) in blog">
   		<a class="item item-thumbnail-left" href="#/tab/post/{{ idx }}">
         <img class="avatar" src="{{ post.featured_image_thumbnail_url }}">

@@ -4,30 +4,65 @@ angular.module('starter.controllers', [])
 		jobs: []
 })
 
-.controller('JobsDaily',['$scope', '$http', '$rootScope',function($scope, $http, $rootScope){
-	$scope.jobs = {};
-	//Exibindo o loading
-  $scope.loading = true;
+.controller('JobsDaily',['$scope', '$http', '$rootScope','$ionicPopover',function($scope, $http, $rootScope,$ionicPopover){
 
 	var qwHttpRequest = function() {
+		//Exibindo o loading
+	  $scope.loading = true;
 
-			$http({
-				method:'GET',
-				url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/?_embed',
-			})
-			.success(function(data){
-				$scope.jobs = data;
-				$rootScope.jobs = data;
-				//Removendo o loading
-				$scope.loading = false;
+		// Tipos de Job
+		$scope.job_types = {};
+		// Jobs
+		$scope.jobs = {};
 
-			})
-			.finally(function(){
-				$scope.$broadcast('scroll.refreshComplete');
-			});
+		// Request para as categorias
+		$http({
+			method: 'GET',
+			url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/job_type?per_page=30'
+		})
+		.success(function(data){
+			console.log(data)
+			$scope.job_types = data;
+			$rootScope.job_types = data;
+		});
+
+		// Ultimos Jobs
+		var jobsRequestUrl = 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/?_embed';
+		if ($rootScope.jobTypeId) {
+			// Ultimos Jobs
+			jobsRequestUrl += '&job_type='+$rootScope.jobTypeId;
+		}
+
+		$http({
+			method:'GET',
+			url: jobsRequestUrl,
+		})
+		.success(function(data){
+			$scope.jobs = data;
+			$rootScope.jobs = data;
+			//Removendo o loading
+			$scope.loading = false;
+		})
+		.finally(function(){
+			$scope.$broadcast('scroll.refreshComplete');
+		});
 	}
 
+	// Menu das categorias
+	$ionicPopover.fromTemplateUrl('templates/submenu/job_types.html', {
+		scope: $scope,
+	}).then(function(popover) {
+		$scope.popover = popover;
+	});
+
+  // Pulldow to Refresh
 	$scope.doRefresh = function() {
+		qwHttpRequest();
+	}
+
+	$scope.loadJobsFromType = function ($jobTypeId) {
+		$rootScope.jobTypeId = $jobTypeId;
+		$scope.popover.hide();
 		qwHttpRequest();
 	}
 
@@ -80,27 +115,66 @@ angular.module('starter.controllers', [])
 
 }])
 
-.controller('BlogDaily',['$scope', '$http', '$rootScope',function($scope, $http, $rootScope){
-	$scope.blog = {};
-	//Exibindo o loading
-  $scope.loading = true;
+.controller('BlogDaily',['$scope', '$http', '$rootScope', '$ionicPopover', function($scope, $http, $rootScope, $ionicPopover){
+
 	var qwHttpRequest = function() {
-			$http({
-				method:'GET',
-				url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/posts/',
-			})
-			.success(function(data){
-				$scope.blog = data;
-				$rootScope.blog = data;
-				//Removendo o loading
-				$scope.loading = false;
-			})
-			.finally(function(){
-				$scope.$broadcast('scroll.refreshComplete');
-			});
+		//Exibindo o loading
+	  $scope.loading = true;
+
+		// Categorias
+		$scope.categories = {};
+		// Posts
+		$scope.blog = {};
+
+		// Request para as categorias
+		$http({
+			method: 'GET',
+			url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/categories?per_page=30'
+		})
+		.success(function(data){
+			$scope.categories = data;
+			$rootScope.categories = data;
+		});
+
+		// Ultimas noticias
+		var postsRequestUrl = 'http://queroworkar.com.br/blog/wp-json/wp/v2/posts/';
+		if ($rootScope.catId) {
+			// Ultimas noticias da categoria
+			postsRequestUrl += '?categories='+$rootScope.catId;
+		}
+
+		// Request para os posts
+		$http({
+			method:'GET',
+			url: postsRequestUrl,
+		})
+		.success(function(data){
+			$scope.blog = data;
+			$rootScope.blog = data;
+			//Removendo o loading
+			$scope.loading = false;
+		})
+		.finally(function(){
+			$scope.$broadcast('scroll.refreshComplete');
+		});
 	}
 
+	// Menu das categorias
+	$ionicPopover.fromTemplateUrl('templates/submenu/categorias.html', {
+		scope: $scope,
+	}).then(function(popover) {
+		$scope.popover = popover;
+	});
+
+
+  // Pulldow to Refresh
 	$scope.doRefresh = function() {
+		qwHttpRequest();
+	}
+
+	$scope.loadPostsFromCategory = function ($catId) {
+		$rootScope.catId = $catId;
+		$scope.popover.hide();
 		qwHttpRequest();
 	}
 
