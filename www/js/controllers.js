@@ -21,17 +21,19 @@ angular.module('starter.controllers', [])
 			url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/job_type?per_page=30'
 		})
 		.success(function(data){
-			console.log(data)
 			$scope.job_types = data;
 			$rootScope.job_types = data;
 		});
 
 		// Ultimos Jobs
 		var jobsRequestUrl = 'http://queroworkar.com.br/blog/wp-json/wp/v2/jobs/?_embed';
+		var viewTitle = '<span class="view-title">Vagas</span>';
 		if ($rootScope.jobTypeId) {
 			// Ultimos Jobs
 			jobsRequestUrl += '&job_type='+$rootScope.jobTypeId;
+			viewTitle += '<span class="view-subtitle"> - ' + $rootScope.jobTypeName + '</span>';
 		}
+		$scope.viewtitle = viewTitle;
 
 		$http({
 			method:'GET',
@@ -60,8 +62,9 @@ angular.module('starter.controllers', [])
 		qwHttpRequest();
 	}
 
-	$scope.loadJobsFromType = function ($jobTypeId) {
-		$rootScope.jobTypeId = $jobTypeId;
+	$scope.loadJobsFromType = function ($jobType) {
+		$rootScope.jobTypeId = $jobType.id;
+		$rootScope.jobTypeName = $jobType.name
 		$scope.popover.hide();
 		qwHttpRequest();
 	}
@@ -138,10 +141,13 @@ angular.module('starter.controllers', [])
 
 		// Ultimas noticias
 		var postsRequestUrl = 'http://queroworkar.com.br/blog/wp-json/wp/v2/posts/';
+		var viewTitle = '<span class="view-title">Blog</span>';
 		if ($rootScope.catId) {
 			// Ultimas noticias da categoria
 			postsRequestUrl += '?categories='+$rootScope.catId;
+			viewTitle += '<span class="view-subtitle"> - ' + $rootScope.catName + '</span>';
 		}
+		$scope.viewtitle = viewTitle;
 
 		// Request para os posts
 		$http({
@@ -166,14 +172,14 @@ angular.module('starter.controllers', [])
 		$scope.popover = popover;
 	});
 
-
   // Pulldow to Refresh
 	$scope.doRefresh = function() {
 		qwHttpRequest();
 	}
 
-	$scope.loadPostsFromCategory = function ($catId) {
-		$rootScope.catId = $catId;
+	$scope.loadPostsFromCategory = function ($cat) {
+		$rootScope.catId = $cat.id;
+		$rootScope.catName = $cat.name;
 		$scope.popover.hide();
 		qwHttpRequest();
 	}

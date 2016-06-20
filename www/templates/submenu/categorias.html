@@ -8,7 +8,7 @@
       <ion-item ng-click="loadPostsFromCategory(0)">
         Última Hora
       </ion-item>
-      <ion-item ng-repeat="item in categories" ng-click="loadPostsFromCategory(item.id)">
+      <ion-item ng-repeat="item in categories" ng-click="loadPostsFromCategory(item)">
         {{item.name}}
       </ion-item>
     </ion-list>
