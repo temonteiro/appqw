@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ionic-material'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ionic-material','ngCordova', 'ionic.service.core', 'ionic.service.push'])
 
 .factory('qwCache', function($cacheFactory){
 //  return $cacheFactory('qwCacheData');
@@ -75,7 +75,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicAppProvider) {
+
+  // Identify app
+ $ionicAppProvider.identify({
+   // The App ID (from apps.ionic.io) for the server
+   app_id: '8416269f',
+   // The public API key all services will use for this app
+   api_key: '6fe0018b642340ef835be1f16db2f27621d1da928f12622f',
+   // Set the app to use development pushes
+   dev_push: true
+ });
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
