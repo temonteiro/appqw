@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ionic-material','ngCordova', 'ionic.service.core', 'ionic.service.push'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ionic-material'])
 
 .factory('qwCache', function($cacheFactory){
 //  return $cacheFactory('qwCacheData');
@@ -41,51 +41,48 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
 
     if(typeof analytics !== undefined) {
         // No lugar de "UA-XXXXXXXX-XX" você deve colocar o seu tracking id
-        cordova.plugins.analytics.startTrackerWithId("UA-59894750-1");
-        cordova.plugins.analytics.trackView("APP QueroWorkar");
+        //cordova.plugins.analytics.startTrackerWithId("UA-59894750-1");
+        //cordova.plugins.analytics.trackView("APP QueroWorkar");
 
     } else {
         console.log("Google Analytics indisponível");
     }
 
+  var admob_ios_key = 'ca-app-pub-2866646594343384/4965022550';
+	var admob_android_key = 'ca-app-pub-2866646594343384/4965022550';
+	var adId = (navigator.userAgent.indexOf('Android') >=0) ? admob_android_key : admob_ios_key;
 
-    if(window.plugins && window.plugins.AdMob) {
-            var admob_key = device.platform == "Android" ? "ca-app-pub-2866646594343384/8957804156" : "ca-app-pub-2866646594343384/8957804156";
-            var admob = window.plugins.AdMob;
-            admob.createBannerView(
-                {
-                    'publisherId': admob_key,
-                    'adSize': admob.AD_POSITION.BOTTOM_CENTER,
-                    'autoShow':true
-                },
-                function() {
-                    admob.requestAd(
-                        { 'isTesting': false },
-                        function() {
-                            admob.showAd(true);
-                        },
-                        function() { console.log('failed to request ad'); }
-                    );
-                },
-                function() { console.log('failed to create banner view'); }
-            );
-        }
 
+	function createAd() {
+	    	if (window.plugins && window.plugins.AdMob ) {
+	    	    var am = window.plugins.AdMob;
+	    	    am.createBannerView(
+                  {
+                  'publisherId': adId,
+                  'adSize': am.AD_SIZE.BANNER,
+                  'bannerAtTop': false
+                  }, function() {
+                  am.requestAd( { 'isTesting':false }, function() {
+                               am.showAd( true );
+                               }, function() {
+                               alert('failed to request ad');
+                               })
+                  }, function(){
+                  alert( "failed to create ad view" );
+                  });
+
+
+	    	} else {
+	    		alert('AdMob plugin not available/ready.');
+	    	}
+	    }
+
+	    createAd();
 
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider,$ionicAppProvider) {
-
-  // Identify app
- $ionicAppProvider.identify({
-   // The App ID (from apps.ionic.io) for the server
-   app_id: '8416269f',
-   // The public API key all services will use for this app
-   api_key: '6fe0018b642340ef835be1f16db2f27621d1da928f12622f',
-   // Set the app to use development pushes
-   dev_push: true
- });
+.config(function($stateProvider, $urlRouterProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
