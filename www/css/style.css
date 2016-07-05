@@ -186,3 +186,31 @@
   font-size: 14px;
   font-family: sans-serif;
 }
+
+
+ion-header-bar h1.withSubtitle {
+    top: -.5rem !important;
+    overflow: visible !important;
+}
+
+ion-header-bar span.isSubtitle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1rem;
+    font-size: .9rem;
+    font-weight: normal;
+}
+
+.menu .bar.bar-header.expanded {
+    min-height: 100px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+}
+
+    .has-expanded-header {
+        top: 100px !important;
+    }
+
+.menu-open .bar.bar-header.expanded {
+    background: #444;
+}
