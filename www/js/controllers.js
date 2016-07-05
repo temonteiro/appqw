@@ -4,6 +4,7 @@ angular.module('starter.controllers', [])
 		jobs: []
 })
 
+
 .controller('JobsDaily',['$scope', '$http', '$rootScope','$ionicPopover',function($scope, $http, $rootScope,$ionicPopover){
 
 	var qwHttpRequest = function() {

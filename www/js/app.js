@@ -41,38 +41,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
 
     if(typeof analytics !== undefined) {
         // No lugar de "UA-XXXXXXXX-XX" você deve colocar o seu tracking id
-        cordova.plugins.analytics.startTrackerWithId("UA-59894750-1");
-        cordova.plugins.analytics.trackView("APP QueroWorkar");
+        //cordova.plugins.analytics.startTrackerWithId("UA-59894750-1");
+        //cordova.plugins.analytics.trackView("APP QueroWorkar");
 
     } else {
         console.log("Google Analytics indisponível");
     }
 
+  /* PUBLICIDADE APP */
 
-    if(window.plugins && window.plugins.AdMob) {
-            var admob_key = device.platform == "Android" ? "ca-app-pub-2866646594343384/8957804156" : "ca-app-pub-2866646594343384/8957804156";
-            var admob = window.plugins.AdMob;
-            admob.createBannerView(
-                {
-                    'publisherId': admob_key,
-                    'adSize': admob.AD_POSITION.BOTTOM_CENTER,
-                    'autoShow':true
-                },
-                function() {
-                    admob.requestAd(
-                        { 'isTesting': false },
-                        function() {
-                            admob.showAd(true);
-                        },
-                        function() { console.log('failed to request ad'); }
-                    );
-                },
-                function() { console.log('failed to create banner view'); }
-            );
-        }
+  admobid = { // for Android
+    banner: 'ca-app-pub-2866646594343384/4965022550'
+  };
 
+  if(window.AdMob) AdMob.createBanner( {
+      adId:admobid.banner,
+      position:AdMob.AD_POSITION.BOTTOM_CENTER,
+      autoShow:true} );
 
   });
+
+  /* PUBLICIDADE APP */
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
