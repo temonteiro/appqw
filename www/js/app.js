@@ -48,38 +48,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
         console.log("Google Analytics indisponível");
     }
 
-  var admob_ios_key = 'ca-app-pub-2866646594343384/4965022550';
-	var admob_android_key = 'ca-app-pub-2866646594343384/4965022550';
-	var adId = (navigator.userAgent.indexOf('Android') >=0) ? admob_android_key : admob_ios_key;
+  /* PUBLICIDADE APP */
 
+  admobid = { // for Android
+    banner: 'ca-app-pub-2866646594343384/4965022550'
+  };
 
-	function createAd() {
-	    	if (window.plugins && window.plugins.AdMob ) {
-	    	    var am = window.plugins.AdMob;
-	    	    am.createBannerView(
-                  {
-                  'publisherId': adId,
-                  'adSize': am.AD_SIZE.BANNER,
-                  'bannerAtTop': false
-                  }, function() {
-                  am.requestAd( { 'isTesting':false }, function() {
-                               am.showAd( true );
-                               }, function() {
-                               alert('failed to request ad');
-                               })
-                  }, function(){
-                  alert( "failed to create ad view" );
-                  });
-
-
-	    	} else {
-	    		alert('AdMob plugin not available/ready.');
-	    	}
-	    }
-
-	    createAd();
+  if(window.AdMob) AdMob.createBanner( {
+      adId:admobid.banner,
+      position:AdMob.AD_POSITION.BOTTOM_CENTER,
+      autoShow:true} );
 
   });
+
+  /* PUBLICIDADE APP */
 })
 
 .config(function($stateProvider, $urlRouterProvider) {

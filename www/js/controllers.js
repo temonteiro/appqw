@@ -8,23 +8,7 @@ angular.module('starter.controllers', [])
 	$scope.jobs = {};
 	//Exibindo o loading
   $scope.loading = true;
-
-	$am = window.plugins.AdMob;
-  $am.createBannerView({
-  'publisherId': 'ca-app-pub-2866646594343384/4965022550',
-	'adSize': $am.AD_SIZE.BANNER,
-	'bannerAtTop': false
-  },function() {
-     $am.requestAd( { 'isTesting':false }, function() {
-									$am.showAd( true );
-									}, function() {
-									alert('failed to request ad');
-									})
-		 }, function(){
-		 		alert( "failed to create ad view" );
-	 	 }
-		 );
-
+	
 	var qwHttpRequest = function() {
 
 			$http({
