@@ -7,6 +7,18 @@ angular.module('starter.controllers', [])
 
 .controller('JobsDaily',['$scope', '$http', '$rootScope','$ionicPopover',function($scope, $http, $rootScope,$ionicPopover){
 
+	//PUBLICIDADE
+	admobid = { // for Android
+		banner: 'ca-app-pub-2866646594343384/4965022550'
+	};
+
+	if(window.AdMob) AdMob.createBanner( {
+			adId:admobid.banner,
+			position:AdMob.AD_POSITION.BOTTOM_CENTER,
+			autoShow:true} );
+
+	});
+
 	var qwHttpRequest = function() {
 		//Exibindo o loading
 	  $scope.loading = true;
