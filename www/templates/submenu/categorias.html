@@ -1,0 +1,22 @@
+<ion-popover-view>
+  <ion-header-bar>
+    <h1 class = "title">Categorias</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <ion-list>
+      <ion-item ng-click="loadPostsFromCategory(0)">
+        Última Hora
+      </ion-item>
+      <ion-item ng-repeat="item in categories" ng-click="loadPostsFromCategory(item)">
+        {{item.name}}
+      </ion-item>
+    </ion-list>
+
+    <!-- div class="list">
+      <a class="item" href="http://learn.ionicframework.com/" target="_blank" ng-repeat="(idx, category) in categories">
+        {{category.name}}
+      </a>
+    </div -->
+  </ion-content>
+</ion-popover-view>
