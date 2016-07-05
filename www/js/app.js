@@ -48,7 +48,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
         console.log("Google Analytics indisponível");
     }
 
-  /* PUBLICIDADE APP */
+  /* PUBLICIDADE APP*/
 
   admobid = { // for Android
     banner: 'ca-app-pub-2866646594343384/4965022550'
