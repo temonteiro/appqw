@@ -85,6 +85,23 @@ angular.module('starter.controllers', [])
 				$stateParams,$ionicActionSheet){
 		$scope.jobs = $rootScope.jobs[$stateParams.jobsId];
 
+		//Recuperando o e-mail da vaga para enviar o currículo diretamente
+		$scope.getEmailApplication = function($stringApply){
+			 var emailApplication = [];
+			 emailApplication = $stringApply.split(' ');
+			 var email = "";
+			 var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+			 for (var i = 0; i < emailApplication.length; i++) {
+				 var emailVerify = emailApplication[i];
+				 if(EMAIL_REGEXP.test(emailVerify)){
+					 email = emailVerify;
+					 break;
+				 }
+			 };
+
+			 window.plugins.socialsharing.shareViaEmail(null,'[QUEROWORKAR]',email);
+		};
+
 		$scope.showActionsheet = function() {
 
 				$ionicActionSheet.show({

@@ -50,6 +50,11 @@
 		<div class="row details-apply responsive-sm" ng-repeat="apply in jobs._how_to_apply">
 			<h3>Como aplicar </h3>
 			<span class="job-description" ng-bind-html=" apply  | sanitize "></span>
+      <div class="row responsive-sm">
+        <button ng-click="getEmailApplication(apply)" class="button button-icon icon ion-email">
+         Enviar o seu currículo
+        </button>
+      </div>
 		</div>
     <div class="clear"></div>
   </ion-content>
