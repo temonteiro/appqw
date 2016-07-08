@@ -32,6 +32,13 @@
     {
       "locator": "https://github.com/phonegap-build/PushPlugin.git",
       "id": "com.phonegap.plugins.PushPlugin"
+    },
+    {
+      "variables": {
+        "SENDER_ID": "566591177234"
+      },
+      "locator": "phonegap-plugin-push",
+      "id": "phonegap-plugin-push"
     }
   ],
   "cordovaPlatforms": [

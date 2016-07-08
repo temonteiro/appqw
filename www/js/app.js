@@ -63,6 +63,36 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
   });
 
   /* PUBLICIDADE APP */
+
+  //PUSH NOTIFICATION
+  var push = PushNotification.init({
+    android: {
+        senderID: "12345679",
+        alert: "true",
+        badge: "true",
+        sound: "true",
+        vibrate: "true"
+    },
+    ios: {
+        alert: "true",
+        badge: "true",
+        sound: "true"
+    },
+    windows: {}
+  });
+
+  window.plugins.PushPlugin.push.on('registration', function(data) {
+       data.registrationId
+  });
+
+  window.plugins.PushPlugin.push.on('notification', function(data) {
+       data.message,
+       data.title,
+       data.count,
+       data.sound
+      // data.image,
+      // data.additionalData
+  });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
