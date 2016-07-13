@@ -19,7 +19,7 @@ angular.module('starter.controllers', [])
 		// Request para as categorias
 		$http({
 			method: 'GET',
-			url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/job_type?per_page=30'
+			url: 'http://queroworkar.com.br/blog/wp-json/wp/v2/job_type'
 		})
 		.success(function(data){
 			$scope.job_types = data;
