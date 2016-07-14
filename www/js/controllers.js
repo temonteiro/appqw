@@ -84,6 +84,7 @@ angular.module('starter.controllers', [])
 .controller('JobDetails',['$scope', '$rootScope','$stateParams','$ionicActionSheet', function($scope, $rootScope,
 				$stateParams,$ionicActionSheet){
 		$scope.jobs = $rootScope.jobs[$stateParams.jobsId];
+		$stringApply = $scope.jobs._how_to_apply[0];
 
 		//Recuperando o e-mail da vaga para enviar o currículo diretamente
 		$scope.getEmailApplication = function($stringApply){
