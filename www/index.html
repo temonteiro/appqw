@@ -31,7 +31,38 @@
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
+    <script type="text/javascript">
+      function initPushwoosh() {
 
+        var pushNotification = cordova.require("pushwoosh-cordova-plugin.PushNotification");
+
+            //set push notifications handler
+            document.addEventListener('push-notification', function(event) {
+                var title = event.notification.title;
+                var userData = event.notification.userdata;
+
+                if(typeof(userData) != "undefined") {
+                    console.warn('user data: ' + JSON.stringify(userData));
+                }
+
+                //alert(title);
+            });
+
+            //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_NUMBER", pw_appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
+            pushNotification.onDeviceReady({ projectid: "566591177234", pw_appid : "AEF88-B69B4" });
+
+            //register for pushes
+            pushNotification.registerDevice(
+                    function(status) {
+                        var pushToken = status;
+                        console.warn('push token: ' + pushToken);
+                    },
+                    function(status) {
+                        console.warn(JSON.stringify(['failed to register ', status]));
+                    }
+            );
+      }
+    </script>
 
   </head>
   <body ng-app="starter" >
