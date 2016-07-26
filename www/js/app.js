@@ -5,6 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ionic-material'])
 
 .factory('qwCache', function($cacheFactory){
@@ -26,10 +27,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
 })*/
 
 .run(function($ionicPlatform) {
+
   $ionicPlatform.ready(function() {
     
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+    initPushwoosh();
+
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -63,7 +67,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','i
 
   });
 
-  /* PUBLICIDADE APP */
 })
 
 .config(function($stateProvider, $urlRouterProvider) {

@@ -31,7 +31,19 @@
     {
       "locator": "https://github.com/apache/cordova-plugin-whitelist.git",
       "id": "cordova-plugin-whitelist"
-    }
+    },
+    {
+      "locator": "https://github.com/phonegap-build/PushPlugin.git",
+      "id": "com.phonegap.plugins.PushPlugin"
+    },
+    {
+      "variables": {
+        "SENDER_ID": "566591177234"
+      },
+      "locator": "phonegap-plugin-push",
+      "id": "phonegap-plugin-push"
+    },
+    "pushwoosh-cordova-plugin"
   ],
   "cordovaPlatforms": [
     "ios"
